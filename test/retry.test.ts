@@ -234,6 +234,39 @@ describe("classifyRetryable", () => {
   });
 });
 
+describe("runWithRetry with the real classifier", () => {
+  const classify = (result: unknown) =>
+    classifyRetryable(result as Parameters<typeof classifyRetryable>[0], 0);
+
+  test("Zhipu 1308 ends the turn after one attempt", async () => {
+    const outcome = await run(
+      [err('{"code":1308,"message":"usage limit reached"}')],
+      { classify },
+    );
+    expect(outcome.attempts).toHaveLength(1);
+    expect(outcome.delays).toEqual([]);
+  });
+
+  test("LiteLLM context overflow ends the turn after one attempt", async () => {
+    const outcome = await run(
+      [
+        err(
+          "litellm.ContextWindowExceededError: Context Window exceeded for given call.",
+        ),
+      ],
+      { classify },
+    );
+    expect(outcome.attempts).toHaveLength(1);
+    expect(outcome.delays).toEqual([]);
+  });
+
+  test("retryable wording still retries up to the cap", async () => {
+    const outcome = await run([err("The model is overloaded")], { classify });
+    expect(outcome.attempts).toHaveLength(4);
+    expect(outcome.delays).toEqual([2000, 4000, 8000]);
+  });
+});
+
 
 describe("runWithRetry", () => {
   test("success on the first attempt: no backoff, no status", async () => {
