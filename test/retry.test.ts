@@ -137,6 +137,8 @@ describe("classifyRetryable", () => {
       "GoUsageLimitError: free tier exhausted",
       "subscription_sharing_usage_limit_exceeded",
       "subscription_sharing_workplace_individual_usage_limit_exceeded",
+      '{"error":{"code":"1308","message":"Your account has reached its usage limit"}}',
+      '{"code":1308,"message":"usage limit reached"}',
     ];
     for (const message of nonRetryable) {
       expect(classifyRetryable(err(message))).toBe(false);
@@ -162,6 +164,7 @@ describe("classifyRetryable", () => {
       "token limit exceeded",
       "context length exceeded",
       "invalid params, context window exceeds limit",
+      "litellm.ContextWindowExceededError: Context Window exceeded for given call.",
       "Prompt has 300000 tokens, but the configured context size is 200000 tokens",
       '{"code":"1261","message":"Prompt exceeds max length"}',
       "Prompt exceeds max length",
