@@ -33,3 +33,7 @@ The agent is responsible for bumping the version, committing, creating an annota
 **Release notes**: the GitHub Release is written by the agent after publishing — organized into Features / Fixes / Docs-Chore (created manually with `gh release create`), not just the workflow's `--generate-notes` comparison link; the workflow does not auto-create Releases.
 
 Republishing the same version is rejected (semver unique index); bump to a new version.
+
+### Changelog
+
+`CHANGELOG.md` at the repo root ships in the npm package (listed in `files`). Every release adds a new top section `## [x.y.z] - YYYY-MM-DD` matching the released version, with `###` subsections (Features / Fixes / Docs-Chore). pi's extension changelog parser (`dist/utils/changelog.js`) splits on `##` only, so `###` never starts a new entry, and it shows the entries newer than the version recorded when the extension was installed; a fresh install records the version and shows nothing.
