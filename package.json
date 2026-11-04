@@ -31,7 +31,8 @@
     "config.json",
     "README.md",
     "README.zh-CN.md",
-    "banner.png"
+    "banner.png",
+    "CHANGELOG.md"
   ],
   "publishConfig": {
     "access": "public"
