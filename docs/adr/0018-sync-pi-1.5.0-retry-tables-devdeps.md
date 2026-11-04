@@ -76,9 +76,11 @@ refreshed) in the two touched files.
   ADR trail (docs/adr/) is the record of each re-sync; the retry.ts header now
   points at `docs/adr/` instead of a hardcoded ADR range. Provenance that
   stays true (issue numbers, provider names, source file names) is kept.
-  Stale 1.4.0 stamps in untouched files (`srcs/index.ts`, `srcs/overlay-layout.ts`,
-  `srcs/config.ts`, `srcs/side-chat-overlay.ts`, `srcs/clipboard-read.ts`,
-  `test/retry.test.ts`) were reported, not touched.
+  Stale stamps elsewhere (`srcs/index.ts`, `srcs/overlay-layout.ts`,
+  `srcs/config.ts`, `srcs/side-chat-overlay.ts`, `test/retry.test.ts`) were
+  reported by this sync and cleaned in the follow-up cleanup commit. The same
+  cleanup removed the remaining 1.3.0 notes (`srcs/clipboard-read.ts`,
+  `test/config.test.ts`, `test/overlay-layout.test.ts`, `test/retry.test.ts`).
 
 ## Considered options
 

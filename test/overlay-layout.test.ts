@@ -22,7 +22,7 @@ describe("LAYOUT (single source for overlay options)", () => {
   });
 });
 
-describe("resolveLayout mirror contract (pi-tui 1.3.0)", () => {
+describe("resolveLayout mirror contract", () => {
   const cases: {
     name: string;
     termWidth: number;

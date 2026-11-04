@@ -147,9 +147,9 @@ function resolveAnchorCol(
 
 /**
  * Resolve the overlay's outer box — a mirror of pi-tui's private
- * TuiBase.resolveOverlayLayout, verified byte-identical against the version
- * this extension runs with: pi-tui 1.4.0 (dist/tui.js L836-924, devDep and
- * runtime); parseSizeValue 1.4.0 L81.
+ * TuiBase.resolveOverlayLayout, verified byte-identical against the installed
+ * pi-tui dist/tui.js (resolveOverlayLayout and parseSizeValue); re-checked on
+ * every pi bump per ADR 0009.
  *
  * SWAP POINT: if pi ever exposes this resolver publicly, replace the whole
  * body with `return resolveOverlayLayout(options, frameHeight, termWidth,

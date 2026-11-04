@@ -141,7 +141,7 @@ function makeCommandChannel(
 export type NativeClipboardReader = Pick<NativeClipboard, "getText">;
 
 /**
- * Delegate loader: pi-tui's `getNativeClipboard()` (pi 1.3.0), the bundled
+ * Delegate loader: pi-tui's `getNativeClipboard()`, the bundled
  * native clipboard helper the main session's `readClipboardText` uses too.
  * It caches helper loading internally and resolves to undefined (never
  * throws) when the platform/arch has no bundled helper — linux without

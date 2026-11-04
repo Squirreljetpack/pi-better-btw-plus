@@ -111,8 +111,8 @@ describe("classifyRetryable", () => {
     }
   });
 
-  test("status codes embedded in longer numbers/words are not retryable (pi 1.4.0 #11057)", () => {
-    // pi 1.4.0 retry.js bounds status codes with (?<![a-z0-9])...(?![a-z0-9])
+  test("status codes embedded in longer numbers/words are not retryable (#11057)", () => {
+    // retry.js bounds status codes with (?<![a-z0-9])...(?![a-z0-9])
     // so a request id or byte count no longer false-matches a status code.
     for (const message of [
       "4291",
@@ -289,7 +289,7 @@ describe("runWithRetry", () => {
     expect(outcome.notices).toHaveLength(3);
   });
 
-  test("backoff is capped at maxAgentDelayMs (pi 1.3.0 parity)", async () => {
+  test("backoff is capped at maxAgentDelayMs", async () => {
     const f = err("overloaded");
     const outcome = await run([f], {
       policy: { maxRetries: 5, baseDelayMs: 1000, maxAgentDelayMs: 2000 },
