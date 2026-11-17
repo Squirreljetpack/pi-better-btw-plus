@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.8.0] - 2026-11-17
+
+### Fixes
+
+- Side chat no longer fails with `400 MissingSessionID` on providers that require a per-conversation routing header (OpenCode Go): the fork agent forwards the main lane's session id to the provider, matching the main lane's routing and shared-prefix caching.
+
 ## [1.7.4] - 2026-11-04
 
 ### Features

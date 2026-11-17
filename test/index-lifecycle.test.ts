@@ -56,7 +56,11 @@ function makeCtx(overrides: Record<string, any> = {}) {
     mode: "tui",
     cwd: process.cwd(),
     getSystemPrompt: () => "",
-    sessionManager: { getEntries: () => [], getLeafId: () => null },
+    sessionManager: {
+      getEntries: () => [],
+      getLeafId: () => null,
+      getSessionId: () => "test-session",
+    },
     modelRegistry: { streamSimple: async () => {} },
     scopedModels: [],
     ...overrides,

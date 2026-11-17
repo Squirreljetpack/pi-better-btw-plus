@@ -97,7 +97,11 @@ function makeOverlay(overrides: any = {}): SideChatOverlayType {
     tracker: { writeCount: 0 },
     modelRegistry: makeRegistry([], []),
     scopedModels: [],
-    sessionManager: { getEntries: () => [], getLeafId: () => null },
+    sessionManager: {
+      getEntries: () => [],
+      getLeafId: () => null,
+      getSessionId: () => "test-session",
+    },
     promptPack: {
       framing: "",
       focusAnchor: "",

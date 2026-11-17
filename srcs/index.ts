@@ -249,6 +249,7 @@ export default function sideChatExtension(pi: ExtensionAPI) {
       thinkingLevel: pi.getThinkingLevel(),
       cwd: ctx.cwd,
       extensionTools: getExtensionAgentTools(),
+      sessionId: ctx.sessionManager.getSessionId(),
     };
 
     try {

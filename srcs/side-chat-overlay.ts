@@ -96,6 +96,10 @@ export interface ForkContext {
   thinkingLevel: ThinkingLevel;
   cwd: string;
   extensionTools: AgentTool[];
+  /** Main-lane session id, forwarded verbatim so provider routing and cache
+   *  affinity match the lane this fork branches from (OpenCode Go rejects
+   *  requests without it: 400 MissingSessionID). */
+  sessionId?: string;
 }
 
 type SessionView = { getEntries(): SessionEntry[]; getLeafId(): string | null };
@@ -618,6 +622,7 @@ export class SideChatOverlay implements Component, Focusable {
           modelRegistry.streamSimple.bind(modelRegistry),
           options.retryPolicy.provider,
         ),
+        sessionId: forkContext.sessionId,
         initialState: {
           // Shared-prefix layout (#9): the MAIN persona stays in the system
           // slot so the request head matches the main lane token-for-token.
