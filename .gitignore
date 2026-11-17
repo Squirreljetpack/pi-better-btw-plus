@@ -10,6 +10,7 @@ pi-better-btw-plan.md
 
 # Dependencies
 node_modules/
+package-lock.json
 
 # Logs & debug artifacts
 *.log
